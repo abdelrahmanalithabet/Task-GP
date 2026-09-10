@@ -1,6 +1,6 @@
 # Student Management System — Batch Administration Project
 
-An Object-Oriented Java Student Management System developed for the Digital Egypt Pioneers Initiative (DEPI) Software Testing track[cite: 1]. This application provides complete administrative capabilities, including student and course management (CRUD), instructor assignment, class isolation, and statistical grade processing for a 50-student cohort.
+An Object-Oriented Java Student Management System developed for the Digital Egypt Pioneers Initiative (DEPI) Software Testing track. This application provides complete administrative capabilities, including student and course management (CRUD), instructor assignment, class isolation, and statistical grade processing for a 50-student cohort.
 
 ---
 
@@ -49,12 +49,12 @@ Every student is enrolled in core courses alongside specific STEM electives and 
 
 | Performance Tier | Target Batch % | Calculated Student Count |
 | :--- | :--- | :--- |
-| **Above 95%** | 1% | 1 Student[cite: 1] |
-| **Above 90%** | 20% | 10 Students[cite: 1] |
-| **Above 85%** | 30% | 15 Students[cite: 1] |
-| **Above 80%** | 25% | 12 Students[cite: 1] |
-| **Above 70%** | 20% | 10 Students[cite: 1] |
-| **Fail (Below 70%)** | 4% | 2 Students[cite: 1] |
+| **Above 95%** | 1% | 1 Student |
+| **Above 90%** | 20% | 10 Students |
+| **Above 85%** | 30% | 15 Students |
+| **Above 80%** | 25% | 12 Students |
+| **Above 70%** | 20% | 10 Students |
+| **Fail (Below 70%)** | 4% | 2 Students |
 | **Total Cohort** | **100%** | **50 Students** |
 
 ---
@@ -84,23 +84,23 @@ STUDENT ENTITY
                                v
 +-----------------------------------------------------------------------+COURSE & INSTRUCTOR- Course: Code, Name, Instructor- Instructor: First Name, Last Name+-----------------------------------------------------------------------+
 ### 4.1 Key OOP Principles Applied
-1. **Encapsulation:** Sensitive fields are kept `private` and accessed strictly through public accessors and mutators[cite: 1].
-2. **Class Isolation:** Separate collection containers manage Class A and Class B rosters independently[cite: 1].
-3. **Modular Management (Single Responsibility):** Dedicated `StudentManager` and `CourseManager` classes handle operational logic and CRUD execution[cite: 1].
-4. **Dynamic Collections:** `ArrayList` structures dynamically accommodate enrollments and roster lists without fixed array boundaries[cite: 1].
+1. **Encapsulation:** Sensitive fields are kept `private` and accessed strictly through public accessors and mutators.
+2. **Class Isolation:** Separate collection containers manage Class A and Class B rosters independently.
+3. **Modular Management (Single Responsibility):** Dedicated `StudentManager` and `CourseManager` classes handle operational logic and CRUD execution.
+4. **Dynamic Collections:** `ArrayList` structures dynamically accommodate enrollments and roster lists without fixed array boundaries.
 
 ---
 
 ## 5. Directory & Class Structure
 
-* `Instructor.java` — Represents faculty members (First Name, Last Name)[cite: 1].
-* `Course.java` — Defines course details and associated instructor assignments[cite: 1].
-* `Grade.java` — Maps individual course entities to student percentage scores[cite: 1].
-* `Student.java` — Core student entity; handles grade entries and average grade calculation[cite: 1].
-* `StudentManager.java` — Handles adding, editing, deleting, and searching student records[cite: 1].
-* `CourseManager.java` — Handles adding, editing, deleting, and listing courses[cite: 1].
-* `ClassGroup.java` — Container for managing isolated administrative class rosters[cite: 1].
-* `BatchManagementSystem.java` — Main application driver demonstrating system initialization and features[cite: 1].
+* `Instructor.java` — Represents faculty members (First Name, Last Name).
+* `Course.java` — Defines course details and associated instructor assignments.
+* `Grade.java` — Maps individual course entities to student percentage scores.
+* `Student.java` — Core student entity; handles grade entries and average grade calculation.
+* `StudentManager.java` — Handles adding, editing, deleting, and searching student records.
+* `CourseManager.java` — Handles adding, editing, deleting, and listing courses.
+* `ClassGroup.java` — Container for managing isolated administrative class rosters.
+* `BatchManagementSystem.java` — Main application driver demonstrating system initialization and features.
 
 ---
 
