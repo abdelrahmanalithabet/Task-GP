@@ -1,60 +1,66 @@
-# Task-GP
-DEPI assignments
 # Student Management System — Batch Administration Project
 
-An Object-Oriented Java Student Management System developed for the Digital Egypt Pioneers Initiative (DEPI) Software Testing track. This application manages student records, course allocations, class isolation, and statistical grade processing for a 50-student cohort.
+An Object-Oriented Java Student Management System developed for the Digital Egypt Pioneers Initiative (DEPI) Software Testing track[cite: 1]. This application provides complete administrative capabilities, including student and course management (CRUD), instructor assignment, class isolation, and statistical grade processing for a 50-student cohort.
 
 ---
 
 ## 1. Project Overview
 
-This system manages an academic batch of **50 students** partitioned into two isolated administrative units: **Class A** (25 students) and **Class B** (25 students). 
+This repository contains an academic management application designed to handle a batch of **50 students** divided equally into two isolated administrative units: **Class A** (25 students) and **Class B** (25 students). 
 
-The application automates student enrollment, enforces class-specific elective rules, guarantees data encapsulation, and maps individual performance percentages against a mandatory statistical grade distribution model.
+The system automates student registration, course setup with assigned instructors, grade recording and average calculation, and performance mapping against a mandatory statistical grade distribution model.
 
 ---
 
-## 2. System Requirements & Academic Specifications
+## 2. Core Capabilities & Administrative Features
 
-### 2.1 Batch Partitioning & ID Formatting
-* **Total Batch Capacity:** 50 Students.
-* **Class Isolation:** Two distinct classes containing 25 students each.
-* **Student Identifier Scheme:**
-  * **Class A Identifiers:** Sequential tracking from `A01` through `A25`.
-  * **Class B Identifiers:** Sequential tracking from `B01` through `B25`.
-* **Personal Data Attributes:** First Name, Last Name, Class Group, and System ID.
+* **Student Management (CRUD):** Methods to add, edit (first name, last name, class), and delete student records.
+* **Course Management (CRUD):** Methods to add, edit (course name, assigned instructor), and delete course offerings.
+* **Instructor Integration:** Tracks faculty details (First Name, Last Name) assigned to specific courses.
+* **Grade Recording & Calculation:** Records individual subject scores per student, computes overall average grade percentage, and categorizes performance tiers.
+* **Class Roster Isolation:** Independent container management for Class A and Class B rosters preventing roster leakage.
 
-### 2.2 Course Allocation Model
-Every student is enrolled in core subjects alongside class-specific STEM electives and second language tracks:
+---
 
-* **Main Core Courses (Mandatory for All 50 Students):**
-  * Arabic
-  * English
+## 3. Academic Specifications & Requirements
+
+### 3.1 Batch Partitioning & Identifier Rules
+* **Total Cohort Size:** 50 Students.
+* **Class Isolation:** Two separate classes containing 25 students each.
+* **Naming & ID Scheme:**
+  * **Class A Identifiers:** `A01` through `A25`.
+  * **Class B Identifiers:** `B01` through `B25`.
+* **Personal Attributes:** First Name, Last Name, Class Group, and Unique ID.
+
+### 3.2 Course Allocation Model
+Every student is enrolled in core courses alongside specific STEM electives and second language options:
+
+* **Core Courses (Mandatory for all 50 students):**
+  * Arabic.
+  * English.
 * **STEM Elective Track (Math vs. Science):**
-  * **Class A (25 Students):** 20 Math / 5 Science.
-  * **Class B (25 Students):** 0 Math / 25 Science.
+  * **Class A:** 20 Math / 5 Science.
+  * **Class B:** 0 Math / 25 Science.
 * **Second Language Option Track (French vs. Dutch):**
-  * **Class A (25 Students):** 20 French / 5 Dutch.
-  * **Class B (25 Students):** 5 French / 20 Dutch.
+  * **Class A:** 20 French / 5 Dutch.
+  * **Class B:** 5 French / 20 Dutch.
 
-### 2.3 Required Grade Distribution Framework
-Student grades are allocated to match an exact statistical breakdown across the 50-student batch:
+### 3.3 Target Grade Distribution Framework
 
-| Grade Performance Bracket | Targeted Batch % | Calculated Student Count |
+| Performance Tier | Target Batch % | Calculated Student Count |
 | :--- | :--- | :--- |
-| **Above 95%** | 1% | 1 Student |
-| **Above 90%** | 20% | 10 Students |
-| **Above 85%** | 30% | 15 Students |
-| **Above 80%** | 25% | 12 Students |
-| **Above 70%** | 20% | 10 Students |
-| **Fail (Below 70%)** | 4% | 2 Students |
+| **Above 95%** | 1% | 1 Student[cite: 1] |
+| **Above 90%** | 20% | 10 Students[cite: 1] |
+| **Above 85%** | 30% | 15 Students[cite: 1] |
+| **Above 80%** | 25% | 12 Students[cite: 1] |
+| **Above 70%** | 20% | 10 Students[cite: 1] |
+| **Fail (Below 70%)** | 4% | 2 Students[cite: 1] |
 | **Total Cohort** | **100%** | **50 Students** |
 
 ---
 
-## 3. System Architecture & Object-Oriented Design
-
-The architecture enforces object-oriented principles to ensure complete decoupling between class rosters and secure state management.+-----------------------------------------------------------------------+
+## 4. System Architecture & Object-Oriented Design
++-----------------------------------------------------------------------+
 |                         BATCH MANAGEMENT SYSTEM                        |
 +-----------------------------------------------------------------------+
 |
@@ -62,68 +68,39 @@ The architecture enforces object-oriented principles to ensure complete decoupli
 |                                                   |
 v                                                   v
 +------------------+                               +------------------+
-|     CLASS A      |                               |     CLASS B      |
-|  (25 Students)   |                               |  (25 Students)   |
+| STUDENT MANAGER  |                               |  COURSE MANAGER  |
+|  (Add/Edit/Del)  |                               |  (Add/Edit/Del)  |
 +------------------+                               +------------------+
 |                                                   |
 +-------------------------+-------------------------+
 |
 v
 +-----------------------------------------------------------------------+
-
-STUDENT ENTITY- Private Attributes: ID, First Name, Last Name, Class, Grade, List- Public Methods: Enroll Course, Set Grade, Categorize Tier
+STUDENT ENTITY
+- Attributes: ID, First Name, Last Name, Class Name, List
+- Methods: Record Grade, Calculate Average Grade, Categorize Tier
 +-----------------------------------------------------------------------+
-### 3.1 Key OOP Principles Applied
-1. **Encapsulation:** Sensitive fields (`id`, `firstName`, `lastName`, `gradePercentage`, `courses`) are kept `private`. Access and modifications occur strictly through public getters and mutators[cite: 1].
-2. **Class Isolation:** Separate collection containers manage Class A and Class B independently, preventing roster leaks or cross-contamination.
-3. **Dynamic Collections:** Dynamic list collections handle course enrollments per student without hardcoded array limits.
+|
+                               v
++-----------------------------------------------------------------------+COURSE & INSTRUCTOR- Course: Code, Name, Instructor- Instructor: First Name, Last Name+-----------------------------------------------------------------------+
+### 4.1 Key OOP Principles Applied
+1. **Encapsulation:** Sensitive fields are kept `private` and accessed strictly through public accessors and mutators[cite: 1].
+2. **Class Isolation:** Separate collection containers manage Class A and Class B rosters independently[cite: 1].
+3. **Modular Management (Single Responsibility):** Dedicated `StudentManager` and `CourseManager` classes handle operational logic and CRUD execution[cite: 1].
+4. **Dynamic Collections:** `ArrayList` structures dynamically accommodate enrollments and roster lists without fixed array boundaries[cite: 1].
 
 ---
 
-## 4. Execution Flow & System Workflow
+## 5. Directory & Class Structure
 
-1. **Class A Population:**
-   * Create 25 student entities assigned IDs `A01` through `A25`.
-   * Enroll all in core courses (**Arabic**, **English**).
-   * Assign **Math** (Students 1–20) and **Science** (Students 21–25).
-   * Assign **French** (Students 1–20) and **Dutch** (Students 21–25).
-
-2. **Class B Population:**
-   * Create 25 student entities assigned IDs `B01` through `B25`.
-   * Enroll all in core courses (**Arabic**, **English**).
-   * Assign **Science** to all 25 students (0 Math).
-   * Assign **French** (Students 1–5) and **Dutch** (Students 6–25).
-
-3. **Grade Evaluation & Validation:**
-   * Generate a 50-item grade pool matching required statistical thresholds.
-   * Map performance values to individual student records.
-   * Output independent class rosters and execute aggregate validation audits.
-
----
-
-## 5. Verification & Audit Results
-
-### 5.1 Enrollment Audit Matrix
-
-| Course Name | Class A Count | Class B Count | Total Enrolled Batch | Status |
-| :--- | :--- | :--- | :--- | :--- |
-| **Arabic** | 25 | 25 | 50 | Verified (100%) |
-| **English** | 25 | 25 | 50 | Verified (100%) |
-| **Math** | 20 | 0 | 20 | Verified (100%) |
-| **Science** | 5 | 25 | 30 | Verified (100%) |
-| **French** | 20 | 5 | 25 | Verified (100%) |
-| **Dutch** | 5 | 20 | 25 | Verified (100%) |
-
-### 5.2 Grade Distribution Audit Matrix
-
-| Category Tier | Target % | Expected Count | Actual System Count | Audit Result |
-| :--- | :--- | :--- | :--- | :--- |
-| **Above 95%** | 1% | 1 | 1 | PASS |
-| **Above 90%** | 20% | 10 | 10 | PASS |
-| **Above 85%** | 30% | 15 | 15 | PASS |
-| **Above 80%** | 25% | 12 | 12 | PASS |
-| **Above 70%** | 20% | 10 | 10 | PASS |
-| **Fail (<70%)** | 4% | 2 | 2 | PASS |
+* `Instructor.java` — Represents faculty members (First Name, Last Name)[cite: 1].
+* `Course.java` — Defines course details and associated instructor assignments[cite: 1].
+* `Grade.java` — Maps individual course entities to student percentage scores[cite: 1].
+* `Student.java` — Core student entity; handles grade entries and average grade calculation[cite: 1].
+* `StudentManager.java` — Handles adding, editing, deleting, and searching student records[cite: 1].
+* `CourseManager.java` — Handles adding, editing, deleting, and listing courses[cite: 1].
+* `ClassGroup.java` — Container for managing isolated administrative class rosters[cite: 1].
+* `BatchManagementSystem.java` — Main application driver demonstrating system initialization and features[cite: 1].
 
 ---
 
@@ -132,7 +109,7 @@ STUDENT ENTITY- Private Attributes: ID, First Name, Last Name, Class, Grade, Lis
 ### Prerequisites
 * **Java Development Kit (JDK):** Version 8 or higher.
 
-### Compilation & Execution Commands
+### Terminal Commands
 
 1. **Clone the repository:**
    ```bash
