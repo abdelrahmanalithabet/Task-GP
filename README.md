@@ -113,5 +113,5 @@ STUDENT ENTITY
 
 1. **Clone the repository:**
    ```bash
-  git clone [https://github.com/abdelrahmanalithabet/student-management-system.git](https://github.com/abdelrahmanalithabet/student-management-system.git)
-cd student-management-system
+   git clone [https://github.com/abdelrahmanalithabet/student-management-system.git](https://github.com/abdelrahmanalithabet/student-management-system.git)
+   cd student-management-system
